@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizim Çizgimiz ❤️ | Sonsuz Aşk Hikayemiz</title>
+    
+    <!-- SEO & Social Sharing Meta Tags -->
+    <meta name="description" content="Birlikte kalbimize kazıdığımız en güzel anlar, fotoğraflar ve özel notlar.">
+    <meta property="og:title" content="Bizim Çizgimiz ❤️">
+    <meta property="og:description" content="26 Mayıs 2026'dan beri yazılan sonsuz bir aşk hikayesi.">
+    
+    <!-- Google Fonts: Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Dancing+Script:wght@600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* ==================== ELEGANT LUXURY COLOR SYSTEM ==================== */
+        :root {
+            --primary: #f472b6;
+            --primary-glow: rgba(244, 114, 182, 0.4);
+            --secondary: #ec4899;
+            --accent-gold: #fbbf24;
+            --accent-gold-glow: rgba(251, 191, 36, 0.35);
+            --accent-blue: #38bdf8;
+            --accent-rose: #f43f5e;
+            
+            --bg-color: #0b0f19;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #1a102f 0%, #0b0f19 75%);
+            --card-bg: rgba(18, 24, 38, 0.78);
+            --card-border: rgba(244, 114, 182, 0.28);
+            --card-border-hover: rgba(244, 114, 182, 0.75);
+            --text-main: #fff5f8;
+            --text-muted: #94a3b8;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.35);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(244, 114, 182, 0.12);
+            --glass-blur: blur(20px);
+            --modal-bg: rgba(15, 21, 35, 0.96);
+        }
+
+        [data-theme="light"] {
+            --primary: #e11d48;
+            --primary-glow: rgba(225, 29, 72, 0.3);
+            --secondary: #f43f5e;
+            --accent-gold: #d97706;
+            --accent-gold-glow: rgba(217, 119, 6, 0.25);
+            --accent-blue: #0284c7;
+            --accent-rose: #be123c;
+            
+            --bg-color: #fff0f3;
+            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffe4e6 50%, #fff5f7 100%);
+            --card-bg: rgba(255, 255, 255, 0.88);
+            --card-border: rgba(225, 29, 72, 0.22);
+            --card-border-hover: rgba(225, 29, 72, 0.65);
+            --text-main: #1e1b4b;
+            --text-muted: #64748b;
+            --shadow-sm: 0 4px 15px rgba(225, 29, 72, 0.08);
+            --shadow-lg: 0 15px 40px rgba(225, 29, 72, 0.15);
+            --modal-bg: rgba(255, 255, 255, 0.97);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        /* Canvas Particle Rain Background */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient Orbs */
+        .bg-orb-1 {
+            position: fixed;
+            top: -15%;
+            left: 10%;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb-2 {
+            position: fixed;
+            bottom: 5%;
+            right: 10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating Top Navigation Toolbar */
+        .top-controls {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+        }
+
+        .control-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.15rem;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.12) rotate(8deg);
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 30px 20px 90px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 50px 20px 30px 20px;
+            animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .badge-romantic {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(244, 114, 182, 0.12);
+            color: var(--primary);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1.main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 20%, var(--primary) 65%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            line-height: 1.15;
+        }
+        [data-theme="light"] h1.main-title {
+            background: linear-gradient(135deg, #1e1b4b 20%, var(--primary) 70%, var(--accent-rose) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 580px;
+            margin: 0 auto;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        /* Relationship Live Counter Section */
+        .counter-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            margin: 40px 0 50px 0;
+            backdrop-filter: var(--glass-blur);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .counter-card:hover {
+            border-color: var(--card-border-hover);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 35px var(--primary-glow);
+        }
+
+        .counter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent-blue), transparent);
+        }
+
+        .counter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            margin-bottom: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 1px;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+
+        .time-box {
+            background: rgba(244, 114, 182, 0.08);
+            border: 1px solid var(--card-border);
+            padding: 20px 12px;
+            border-radius: 22px;
+            transition: all 0.35s ease;
+        }
+
+        .time-box:hover {
+            transform: translateY(-5px);
+            background: rgba(244, 114, 182, 0.16);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .time-box label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .detailed-counter {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: var(--glass-blur);
+        }
+        [data-theme="light"] .detailed-counter {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* 3D Envelope Love Letter Section */
+        .letter-container {
+            margin: 50px 0;
+            perspective: 1000px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .envelope-wrapper {
+            max-width: 580px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: var(--glass-blur);
+            text-align: center;
+            position: relative;
+        }
+
+        .envelope-3d {
+            width: 100%;
+            max-width: 400px;
+            height: 240px;
+            margin: 25px auto 15px auto;
+            position: relative;
+            background: linear-gradient(145deg, #1e1b2e, #311e3b);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+        }
+        [data-theme="light"] .envelope-3d {
+            background: linear-gradient(145deg, #fff0f3, #ffe4e6);
+        }
+
+        .envelope-3d:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 20px 40px var(--primary-glow);
+        }
+
+        .wax-seal {
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle, #f43f5e 0%, #9f1239 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.9rem;
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.5), inset 0 0 10px rgba(0,0,0,0.3);
+            z-index: 5;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .wax-seal::after {
+            content: 'Mührü Aç';
+            position: absolute;
+            bottom: -28px;
+            font-size: 0.78rem;
+            white-space: nowrap;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .envelope-3d.open .wax-seal {
+            transform: scale(0) rotate(180deg);
+            opacity: 0;
+        }
+
+        .letter-modal-paper {
+            display: none;
+            background: #fffdf9;
+            color: #1e1b4b;
+            padding: 40px 35px;
+            border-radius: 24px;
+            margin-top: 25px;
+            text-align: left;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.03), 0 15px 40px rgba(0,0,0,0.15);
+            border: 1px solid #f0e6d2;
+            position: relative;
+            animation: paperUnfold 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        [data-theme="dark"] .letter-modal-paper {
+            background: #1c1829;
+            color: #f1f5f9;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .letter-modal-paper h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+
+        .letter-body {
+            font-size: 1.08rem;
+            line-height: 1.9;
+            white-space: pre-line;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .letter-signature {
+            margin-top: 30px;
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin: 70px 0 35px 0;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Timeline Filters */
+        .timeline-filter {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.35s ease;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        /* Memory Timeline Cards */
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.45 cubic-bezier(0.16, 1, 0.3, 1);
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 0 30px var(--primary-glow);
+        }
+
+        .timeline-img-wrapper {
+            position: relative;
+            height: 100%;
+            min-height: 250px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .timeline-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.65s ease;
+        }
+
+        .timeline-card:hover .timeline-img {
+            transform: scale(1.08);
+        }
+
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .timeline-img-wrapper:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .timeline-content {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .timeline-tag-date {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .timeline-tag {
+            background: rgba(244, 114, 182, 0.12);
+            color: var(--primary);
+            padding: 5px 14px;
+            border-radius: 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--card-border);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timeline-desc {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* Action Buttons */
+        .add-btn-wrapper {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 15px 36px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px var(--primary-glow);
+            transition: all 0.35s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px var(--primary-glow);
+        }
+
+        /* Gelecek Hayallerimiz (Bucket List Section) */
+        .bucket-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: var(--glass-blur);
+            margin: 40px 0;
+        }
+
+        .progress-bar-container {
+            background: rgba(244, 114, 182, 0.12);
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0 30px 0;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent-blue));
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 10px;
+        }
+
+        .bucket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .bucket-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            padding: 16px 20px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        [data-theme="light"] .bucket-item {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .bucket-item:hover {
+            background: rgba(244, 114, 182, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .bucket-item.completed {
+            background: rgba(34, 197, 94, 0.12);
+            border-color: rgba(34, 197, 94, 0.35);
+        }
+
+        .bucket-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 7px;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .bucket-item.completed .bucket-checkbox {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: #fff;
+        }
+
+        .bucket-text {
+            font-size: 0.98rem;
+            font-weight: 500;
+        }
+
+        .bucket-item.completed .bucket-text {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        /* Music Player Section */
+        .music-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            padding: 35px 30px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: var(--glass-blur);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0 25px 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-top: 6px;
+            font-size: 0.88rem;
+        }
+
+        /* Modals System */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--modal-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 35px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transform: scale(0.92);
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            font-size: 0.98rem;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+        [data-theme="light"] .form-control {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .lightbox-img {
+            width: 100%;
+            max-height: 62vh;
+            object-fit: contain;
+            border-radius: 18px;
+            margin-bottom: 18px;
+        }
+
+        /* KEYFRAME ANIMATIONS */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes paperUnfold {
+            0% { opacity: 0; transform: scaleY(0); }
+            100% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 768px) {
+            h1.main-title { font-size: 2.8rem; }
+            .timer-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .time-box span { font-size: 2rem; }
+            .timeline-card { grid-template-columns: 1fr; }
+            .timeline-img-wrapper { height: 230px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas Particle Rain Background -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Ambient Glow Orbs -->
+    <div class="bg-orb-1"></div>
+    <div class="bg-orb-2"></div>
+
+    <!-- Top Floating Controls -->
+    <div class="top-controls">
+        <button class="control-btn" id="themeToggleBtn" title="Tema Değiştir (Gece/Gündüz)">
+            <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="control-btn" id="settingsBtn" title="Sayfayı Özelleştir">
+            <i class="fa-solid fa-gear"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header -->
+        <header>
+            <div class="badge-romantic">
+                <i class="fa-solid fa-sparkles"></i> Aşkımızın Dijital Anı Defteri
+            </div>
+            <h1 class="main-title">Bizim Çizgimiz</h1>
+            <p class="subtitle" id="subtitleDisplay">Birlikte kalbimize kazıdığımız en güzel anlar, kahkahalar ve yarınlarımız için...</p>
+        </header>
+
+        <!-- Live Relationship Counter -->
+        <div class="counter-card">
+            <div class="counter-title">
+                <i class="fa-solid fa-hourglass-half" style="color: var(--primary);"></i>
+                <span>İyi ki Hayatımdasın! Birlikte Geçen Zaman</span>
+            </div>
+
+            <div class="timer-grid">
+                <div class="time-box">
+                    <span id="days">0</span>
+                    <label>GÜN</label>
+                </div>
+                <div class="time-box">
+                    <span id="hours">0</span>
+                    <label>SAAT</label>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">0</span>
+                    <label>DAKİKA</label>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">0</span>
+                    <label>SANİYE</label>
+                </div>
+            </div>
+
+            <div class="detailed-counter" id="detailedCounterText">
+                <i class="fa-solid fa-heart" style="color: var(--primary);"></i> 
+                Yükleniyor...
+            </div>
+        </div>
+
+        <!-- Interactive 3D Envelope Love Letter -->
+        <div class="letter-container">
+            <div class="envelope-wrapper">
+                <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 6px; font-size: 1.6rem;">Sana Bir Mektubum Var ✉️</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Mührün üzerine tıklayarak mektubu açabilirsin.</p>
+                
+                <div class="envelope-3d" id="envelope3D">
+                    <div class="wax-seal" id="waxSealBtn">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+
+                <div class="letter-modal-paper" id="letterPaper">
+                    <h3 id="letterTitleDisplay">Sevgilim,</h3>
+                    <div class="letter-body" id="letterTextDisplay">
+Hayatıma girdiğin günden beri her günüm seninle çok daha renkli, neşeli ve anlamlı. Yanındayken zamanın nasıl aktığını unutuyorum. 
+
+Bu küçük dijital köşeyi; birlikte biriktirdiğimiz güzel anları, kahkahaları ve gelecekte gerçekleştireceğimiz tüm hayalleri saklayabilmek için hazırladım. 
+
+İyi ki varsın, sonsuza dek seni seveceğim!
+                    </div>
+                    <div class="letter-signature" id="letterSigDisplay">Sonsuz Sevgilerimle ❤️</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo Memory Timeline -->
+        <div class="section-header">
+            <h2>Anı Tünelimiz 📸</h2>
+            <p>Unutulmaz günlerimizden geriye kalan en tatlı kareler</p>
+        </div>
+
+        <!-- Timeline Category Filters -->
+        <div class="timeline-filter">
+            <button class="filter-btn active" data-filter="all">Tümü</button>
+            <button class="filter-btn" data-filter="ilkler">İlkler ☕</button>
+            <button class="filter-btn" data-filter="tatiller">Geziler 🌊</button>
+            <button class="filter-btn" data-filter="ozel">Özel Günler 🎆</button>
+        </div>
+
+        <!-- Timeline Cards List -->
+        <div class="timeline-list" id="timelineList">
+            <!-- Rendered via JS -->
+        </div>
+
+        <!-- Add New Memory Button -->
+        <div class="add-btn-wrapper">
+            <button class="btn-primary" id="openAddMemoryModalBtn">
+                <i class="fa-solid fa-plus"></i> Yeni Bir Anı Ekle
+            </button>
+        </div>
+
+        <!-- Gelecek Hayallerimiz (Bucket List Section) -->
+        <div class="section-header">
+            <h2>Gelecek Hayallerimiz ✨</h2>
+            <p>Birlikte gerçekleştireceğimiz tatlı hedeflerimiz</p>
+        </div>
+
+        <div class="bucket-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 600;">Tamamlanan Hayaller:</span>
+                <span id="bucketProgressText" style="color: var(--primary); font-weight: 700; font-size: 1.1rem;">0%</span>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="bucketProgressBar"></div>
+            </div>
+
+            <div class="bucket-grid" id="bucketGrid">
+                <!-- Rendered via JS -->
+            </div>
+
+            <div style="text-align: center; margin-top: 28px;">
+                <button class="filter-btn" id="addBucketItemBtn">
+                    <i class="fa-solid fa-plus"></i> Hayal Ekle
+                </button>
+            </div>
+        </div>
+
+        <!-- Music Section -->
+        <div class="music-card">
+            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 12px; font-size: 1.6rem;">Bizim Şarkımız 🎵</h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 22px;">Mustafa Sandal - İsyankar (Anılarımıza Eşlik Eden O Özel Parça)</p>
+            <div style="background: rgba(244, 114, 182, 0.06); border: 1px solid var(--card-border); border-radius: 24px; padding: 22px; max-width: 600px; margin: 0 auto;">
+                <audio id="bgAudio" autoplay loop controls style="width: 100%; outline: none; border-radius: 30px;">
+                    <source src="song.mp3" type="audio/mpeg">
+                    Tarayıcınız ses öğesini desteklemiyor.
+                </audio>
+                <div style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-volume-high" style="color: var(--primary);"></i> Otomatik Oynatma Aktif
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary);">Sonsuza Dek Birlikte ❤️</p>
+            <p>© <span id="currentYear"></span> Bizim Çizgimiz. Tüm sevgilerle hazırlandı.</p>
+        </footer>
+
+    </div>
+
+    <!-- MODALS -->
+    <!-- 1. Settings & Customizer Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Sayfayı Özelleştir ⚙️</h3>
+                <button class="close-modal" id="closeSettingsBtn">&times;</button>
+            </div>
+
+            <form id="settingsForm">
+                <div class="form-group">
+                    <label>Başlık / İsimler:</label>
+                    <input type="text" id="inputCoupleNames" class="form-control" placeholder="Bizim Çizgimiz">
+                </div>
+
+                <div class="form-group">
+                    <label>İlişki Başlangıç Tarihi ve Saati:</label>
+                    <input type="datetime-local" id="inputStartDate" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Mektup Başlığı:</label>
+                    <input type="text" id="inputLetterTitle" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Özel Mektubunuz:</label>
+                    <textarea id="inputLetterBody" class="form-control"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 25px;">
+                    <button type="submit" class="btn-primary" style="flex: 1;">Kaydet & Güncelle</button>
+                    <button type="button" id="resetDataBtn" class="filter-btn" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">Sıfırla</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. Add New Memory Modal -->
+    <div class="modal-overlay" id="addMemoryModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Yeni Bir Anı Ekle 📸</h3>
+                <button class="close-modal" id="closeAddMemoryBtn">&times;</button>
+            </div>
+
+            <form id="addMemoryForm">
+                <div class="form-group">
+                    <label>Anı Başlığı:</label>
+                    <input type="text" id="memTitle" class="form-control" placeholder="Örn: İlk Kahve Buluşması" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tarih:</label>
+                    <input type="text" id="memDate" class="form-control" placeholder="Örn: 15 Haziran 2023" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Kategori:</label>
+                    <select id="memCategory" class="form-control">
+                        <option value="ilkler">İlkler ☕</option>
+                        <option value="tatiller">Geziler 🌊</option>
+                        <option value="ozel">Özel Günler 🎆</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Fotoğraf Dosya Adı (Örn: photo_01.jpeg):</label>
+                    <input type="text" id="memImg" class="form-control" placeholder="photo_01.jpeg" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Açıklama / Anının Hikayesi:</label>
+                    <textarea id="memDesc" class="form-control" placeholder="O gün heyecandan..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 15px;">Anıyı Kaydet ❤️</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Photo Lightbox Modal -->
+    <div class="modal-overlay" id="lightboxModal">
+        <div class="modal-box" style="max-width: 720px; text-align: center;">
+            <button class="close-modal" id="closeLightboxBtn" style="position: absolute; top: 15px; right: 20px; z-index: 10;">&times;</button>
+            <img src="" id="lightboxImg" class="lightbox-img" alt="Anı Görseli">
+            <h3 id="lightboxTitle" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 6px; font-family: 'Playfair Display', serif;"></h3>
+            <p id="lightboxDate" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px; font-weight: 600;"></p>
+            <p id="lightboxDesc" style="font-size: 1rem; color: var(--text-main); line-height: 1.7; text-align: left; background: rgba(255,255,255,0.03); padding: 15px 20px; border-radius: 14px; border: 1px solid var(--card-border);"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Engine -->
+    <script>
+        // Clean Web-Safe GitHub Ready Memories Data Mapping
+        const DEFAULT_MEMORIES = [
+            { id: 1, title: "İlk HM Kafe Buluşmamız", date: "İlk Günler", category: "ilkler", img: "photo_01.jpeg", desc: "Kahvemizi yudumlarken saatlerin nasıl geçtiğini anlamadığımız, o unutulmaz ilk cafe randevumuz." },
+            { id: 2, title: "Bana Yaptığın İlk Tatlı", date: "Özel Bir Tat", category: "ilkler", img: "photo_02.jpeg", desc: "Ellerinle hazırladığın o ilk tatlı... Dünyadaki en lezzetli şeydi çünkü içinde sevgin vardı." },
+            { id: 3, title: "İlk Çamlıca Tepesi Gezimiz", date: "İstanbul Manzarası", category: "tatiller", img: "photo_03.jpeg", desc: "İstanbul ayaklarımızın altındaydı ama benim gözlerim sadece sendeydi." },
+            { id: 4, title: "İlk Spontane Maceramız", date: "Rastgele Rota", category: "tatiller", img: "photo_04.jpeg", desc: "Plan yapmadan çıktığımız, haritasız ama kahkaha dolu o sürpriz ilk gezimiz." },
+            { id: 5, title: "Deniz Kenarında Huzur", date: "Mavi Anlar", category: "tatiller", img: "photo_05.jpeg", desc: "Deniz kokusu, dalga sesleri ve yan yana olmanın huzuru." },
+            { id: 6, title: "Köyceğiz Yolculuğu Öncesi", date: "Heyecanlı Yolculuk", category: "tatiller", img: "photo_06.jpeg", desc: "Yola çıkmadan hemen önceki o tatlı telaş ve heyecan dolu tebessümlerimiz." },
+            { id: 7, title: "Kampüste Birlikte", date: "Okul Günleri", category: "ozel", img: "photo_07.jpeg", desc: "Ders aralarında buluştuğumuz, okul koridorlarını güzelleştiren o tatlı anlar." },
+            { id: 8, title: "Okulda Olan Vakitlerimiz", date: "Kampüs Anıları", category: "ozel", img: "photo_08.jpeg", desc: "Okul günlerini çekilir kılan, her anı neşeyle dolduran güzel sevgilim." },
+            { id: 9, title: "En Tatlı Kahvaltı Soframız", date: "Sabah Keyfi", category: "ozel", img: "photo_09.jpeg", desc: "Birlikte yapılan kahvaltıların tadı bambaşka." },
+            { id: 10, title: "Birlikte Doğum Günleri", date: "Kutlamalar", category: "ozel", img: "photo_10.jpeg", desc: "Mumları birlikte üflediğimiz özel günlerimiz." },
+            { id: 11, title: "Bana Yazdığın Doğum Günü Notu", date: "Değerli Notlar", category: "ilkler", img: "photo_11.jpeg", desc: "Kelime kelime kalbime dokunan en kıymetli notun." },
+            { id: 12, title: "Dünyanın En Güzel Kızıyla", date: "Aşkla", category: "ozel", img: "photo_12.jpeg", desc: "Gözlerinin içi gülen dünyalar güzeli sevgilimle." },
+            { id: 13, title: "Eğlenceli Tarkan Pozumuz", date: "Komik Anlar", category: "ozel", img: "photo_13.jpeg", desc: "Kahkahalara boğulduğumuz o efsane poz!" },
+            { id: 14, title: "Sevgi Dolu Yaramazlıklar", date: "Neşeli Günler", category: "ozel", img: "photo_14.jpeg", desc: "Yanağından küçük bir makas alırken attığımız o içten gülüşler." },
+            { id: 15, title: "Eğlenceli ve Kahkaha Dolu", date: "Neşe", category: "ozel", img: "photo_15.jpeg", desc: "Ciddi duramadığımız en doğal hallerimiz." },
+            { id: 16, title: "Benim Şirin Sevgilim", date: "Tatlı Bakışlar", category: "ozel", img: "photo_16.jpeg", desc: "Her bakışında içimi ısıtan halin." },
+            { id: 17, title: "Gülümseten Şapşal Anlar", date: "Neşeli Günler", category: "ozel", img: "photo_17.jpeg", desc: "Bakmaya doyamadığım o tatlı yüz ifaden." },
+            { id: 18, title: "Tatlı Bir Mola", date: "Günün İçinden", category: "ozel", img: "photo_18.jpeg", desc: "Bir yudum su kadar masum güzel bir kare." },
+            { id: 19, title: "O Tatlı Utangaç Bakışlar", date: "Sıcak Anlar", category: "ozel", img: "photo_19.jpeg", desc: "Kamera karşısında utandığında bile dünyanın en tatlı insanı oluyorsun." },
+            { id: 20, title: "İstanbul'daki Unutulmaz Günler", date: "İstanbul", category: "tatiller", img: "photo_20.jpeg", desc: "İstanbul sokaklarında adımlarımızı birleştirdiğimiz vakitler." },
+            { id: 21, title: "Gözlerindeki Eşsiz Güzellik", date: "Özel Kare", category: "ozel", img: "photo_21.jpeg", desc: "Sana her baktığımda heyecanlandığım o duru güzellik." },
+            { id: 22, title: "İlk Gülüşlerimiz", date: "Özel Kare", category: "ilkler", img: "photo_22.jpeg", desc: "Hikayemizin ilk sayfalarından buram buram samimiyet kokan bir anı." },
+            { id: 23, title: "Göz Göze Geldiğimiz O An", date: "Büyülü An", category: "ilkler", img: "photo_23.jpeg", desc: "Zamanın durduğu büyülü bir zaman dilimi." },
+            { id: 24, title: "Birlikte Adım Adım", date: "Yan Yana", category: "tatiller", img: "photo_24.jpeg", desc: "El ele yürüdüğümüz her yol seninle güzel." },
+            { id: 25, title: "Sıcak Bir Kucaklaşma", date: "Huzur Karesi", category: "ilkler", img: "photo_25.jpeg", desc: "Tüm dünyayı dışarıda bırakan huzur dolu bir kucaklaşma." },
+            { id: 26, title: "Kalbimdeki En Özel Köşe", date: "En Özel An", category: "ilkler", img: "photo_26.jpeg", desc: "Fotoğraflara sığmayan en özel karesi aşkımızın." },
+            { id: 27, title: "En Sevdiğim Anlarımız", date: "Favori Kare", category: "ilkler", img: "photo_27.jpeg", desc: "Dönüp dönüp tekrar baktığım karemiz." }
+        ];
+
+        const DEFAULT_STATE = {
+            coupleNames: "Bizim Çizgimiz",
+            subtitle: "Birlikte kalbimize kazıdığımız en güzel anlar, kahkahalar ve yarınlarımız için...",
+            startDateISO: "2026-05-26T00:00",
+            letterTitle: "Sevgilim,",
+            letterBody: `Hayatıma girdiğin günden beri her günüm seninle çok daha renkli, neşeli ve anlamlı. Yanındayken zamanın nasıl aktığını unutuyorum. 
+
+Bu küçük dijital köşeyi; birlikte biriktirdiğimiz güzel anları, kahkahaları ve gelecekte gerçekleştireceğimiz tüm hayalleri saklayabilmek için hazırladım. 
+
+İyi ki varsın, sonsuza dek seni seveceğim!`,
+            memories: DEFAULT_MEMORIES,
+            bucketList: [
+                { id: 1, text: "Birlikte Paris'te Eyfel Kulesi altında kahve içmek", completed: false },
+                { id: 2, text: "Kuzey Işıkları'nı izlemek 🌌", completed: false },
+                { id: 3, text: "Sevimli bir evcil hayvan sahiplenmek 🐾", completed: true },
+                { id: 4, text: "Dağ evinde şömine başında kış tatili yapmak ❄️", completed: true },
+                { id: 5, text: "Birlikte İtalyan makarnası pişirmeyi öğrenmek 🍝", completed: false }
+            ]
+        };
+
+        let appState = JSON.parse(localStorage.getItem('bizimCizgimizState')) || DEFAULT_STATE;
+        appState.startDateISO = "2026-05-26T00:00";
+        appState.memories = DEFAULT_MEMORIES; // Sync with GitHub ready photo filenames
+        saveState();
+
+        function saveState() {
+            localStorage.setItem('bizimCizgimizState', JSON.stringify(appState));
+        }
+
+        // --- 1. DYNAMIC THEME SWITCHER ---
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const htmlElem = document.documentElement;
+        const savedTheme = localStorage.getItem('bizimCizgimizTheme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const current = htmlElem.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+        });
+
+        function setTheme(theme) {
+            htmlElem.setAttribute('data-theme', theme);
+            localStorage.setItem('bizimCizgimizTheme', theme);
+            themeToggleBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun" style="color: var(--accent-gold);"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+
+        // --- 2. LIVE RELATIONSHIP COUNTER (Starts 26 May 2026) ---
+        function updateCounter() {
+            const start = new Date(appState.startDateISO);
+            const now = new Date();
+            const diff = now - start;
+
+            if (isNaN(diff)) return;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+
+            let years = now.getFullYear() - start.getFullYear();
+            let months = now.getMonth() - start.getMonth();
+            let remDays = now.getDate() - start.getDate();
+
+            if (remDays < 0) {
+                months -= 1;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                remDays += prevMonth.getDate();
+            }
+            if (months < 0) {
+                years -= 1;
+                months += 12;
+            }
+
+            document.getElementById('detailedCounterText').innerHTML = 
+                `<i class="fa-solid fa-heart" style="color: var(--primary);"></i> Toplam: <b>${years}</b> Yıl, <b>${months}</b> Ay, <b>${remDays}</b> Gün`;
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // --- 3. INTERACTIVE 3D ENVELOPE LOVE LETTER ---
+        const envelope3D = document.getElementById('envelope3D');
+        const letterPaper = document.getElementById('letterPaper');
+
+        envelope3D.addEventListener('click', () => {
+            if (!envelope3D.classList.contains('open')) {
+                envelope3D.classList.add('open');
+                playChimeSound();
+                setTimeout(() => {
+                    envelope3D.style.display = 'none';
+                    letterPaper.style.display = 'block';
+                    confetti({ particleCount: 65, spread: 70, origin: { y: 0.6 } });
+                }, 400);
+            }
+        });
+
+        // --- 4. RENDER TIMELINE MEMORIES ---
+        const timelineList = document.getElementById('timelineList');
+        let currentFilter = 'all';
+
+        function renderTimeline() {
+            timelineList.innerHTML = '';
+            const filtered = appState.memories.filter(item => currentFilter === 'all' || item.category === currentFilter);
+
+            if (filtered.length === 0) {
+                timelineList.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);">Bu kategoride henüz anı eklenmemiş ❤️</div>`;
+                return;
+            }
+
+            filtered.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'timeline-card';
+                card.style.animationDelay = `${idx * 0.1}s`;
+
+                card.innerHTML = `
+                    <div class="timeline-img-wrapper" onclick="openLightbox(${item.id})">
+                        <img src="${item.img}" alt="${item.title}" class="timeline-img" loading="lazy">
+                        <div class="img-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-tag-date">
+                            <span class="timeline-tag">${getCategoryName(item.category)}</span>
+                            <div class="timeline-date"><i class="fa-regular fa-calendar-heart"></i> ${item.date}</div>
+                        </div>
+                        <div class="timeline-title">${item.title}</div>
+                        <p class="timeline-desc">${item.desc}</p>
+                    </div>
+                `;
+                timelineList.appendChild(card);
+            });
+        }
+
+        function getCategoryName(cat) {
+            switch(cat) {
+                case 'ilkler': return 'İlkler ☕';
+                case 'tatiller': return 'Geziler 🌊';
+                case 'ozel': return 'Özel Gün 🎆';
+                default: return 'Anı ❤️';
+            }
+        }
+
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.getAttribute('data-filter');
+                renderTimeline();
+            });
+        });
+
+        // Lightbox Modal
+        const lightboxModal = document.getElementById('lightboxModal');
+        function openLightbox(id) {
+            const item = appState.memories.find(m => m.id === id);
+            if (!item) return;
+            document.getElementById('lightboxImg').src = item.img;
+            document.getElementById('lightboxTitle').innerText = item.title;
+            document.getElementById('lightboxDate').innerText = item.date;
+            document.getElementById('lightboxDesc').innerText = item.desc;
+            lightboxModal.classList.add('active');
+        }
+        document.getElementById('closeLightboxBtn').addEventListener('click', () => lightboxModal.classList.remove('active'));
+
+        // Add Memory Modal
+        const addMemoryModal = document.getElementById('addMemoryModal');
+        document.getElementById('openAddMemoryModalBtn').addEventListener('click', () => addMemoryModal.classList.add('active'));
+        document.getElementById('closeAddMemoryBtn').addEventListener('click', () => addMemoryModal.classList.remove('active'));
+
+        document.getElementById('addMemoryForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newMem = {
+                id: Date.now(),
+                title: document.getElementById('memTitle').value,
+                date: document.getElementById('memDate').value,
+                category: document.getElementById('memCategory').value,
+                img: document.getElementById('memImg').value,
+                desc: document.getElementById('memDesc').value
+            };
+            appState.memories.unshift(newMem);
+            saveState();
+            renderTimeline();
+            addMemoryModal.classList.remove('active');
+            e.target.reset();
+            confetti({ particleCount: 70, spread: 80, origin: { y: 0.7 } });
+        });
+
+        // --- 5. BUCKET LIST MANAGEMENT ---
+        const bucketGrid = document.getElementById('bucketGrid');
+
+        function renderBucketList() {
+            bucketGrid.innerHTML = '';
+            let completedCount = 0;
+
+            appState.bucketList.forEach(item => {
+                if (item.completed) completedCount++;
+
+                const elem = document.createElement('div');
+                elem.className = `bucket-item ${item.completed ? 'completed' : ''}`;
+                elem.onclick = () => toggleBucketItem(item.id);
+
+                elem.innerHTML = `
+                    <div class="bucket-checkbox">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div class="bucket-text">${item.text}</div>
+                `;
+                bucketGrid.appendChild(elem);
+            });
+
+            const percent = appState.bucketList.length ? Math.round((completedCount / appState.bucketList.length) * 100) : 0;
+            document.getElementById('bucketProgressBar').style.width = `${percent}%`;
+            document.getElementById('bucketProgressText').innerText = `${percent}% Tamamlandı`;
+        }
+
+        function toggleBucketItem(id) {
+            const item = appState.bucketList.find(b => b.id === id);
+            if (item) {
+                item.completed = !item.completed;
+                saveState();
+                renderBucketList();
+                if (item.completed) playPopSound();
+            }
+        }
+
+        document.getElementById('addBucketItemBtn').addEventListener('click', () => {
+            const text = prompt('Yeni bir ortak hayal yazın:');
+            if (text && text.trim()) {
+                appState.bucketList.push({
+                    id: Date.now(),
+                    text: text.trim(),
+                    completed: false
+                });
+                saveState();
+                renderBucketList();
+            }
+        });
+
+        // --- 6. SETTINGS & CUSTOMIZER MODAL ---
+        const settingsModal = document.getElementById('settingsModal');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+
+        settingsBtn.addEventListener('click', () => {
+            document.getElementById('inputCoupleNames').value = appState.coupleNames;
+            document.getElementById('inputStartDate').value = appState.startDateISO;
+            document.getElementById('inputLetterTitle').value = appState.letterTitle;
+            document.getElementById('inputLetterBody').value = appState.letterBody;
+            settingsModal.classList.add('active');
+        });
+
+        closeSettingsBtn.addEventListener('click', () => settingsModal.classList.remove('active'));
+
+        document.getElementById('settingsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            appState.coupleNames = document.getElementById('inputCoupleNames').value;
+            appState.startDateISO = document.getElementById('inputStartDate').value;
+            appState.letterTitle = document.getElementById('inputLetterTitle').value;
+            appState.letterBody = document.getElementById('inputLetterBody').value;
+
+            saveState();
+            applyStateToUI();
+            settingsModal.classList.remove('active');
+        });
+
+        document.getElementById('resetDataBtn').addEventListener('click', () => {
+            if (confirm('Tüm özelleştirmeleri varsayılana sıfırlamak istediğinize emin misiniz?')) {
+                appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+                saveState();
+                applyStateToUI();
+                settingsModal.classList.remove('active');
+            }
+        });
+
+        function applyStateToUI() {
+            document.getElementById('letterTitleDisplay').innerText = appState.letterTitle;
+            document.getElementById('letterTextDisplay').innerText = appState.letterBody;
+            updateCounter();
+            renderTimeline();
+            renderBucketList();
+        }
+
+        // --- 7. AUDIO SYNTHESIZER SOUND EFFECTS ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playChimeSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1046.50, audioCtx.currentTime + 0.3);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+
+        function playPopSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        // --- 8. BACKGROUND CANVAS FLOATING HEARTS & SPARKLES ---
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+
+        class HeartParticle {
+            constructor(x, y, isBurst = false) {
+                this.x = x || Math.random() * width;
+                this.y = y || height + 20;
+                this.size = Math.random() * 16 + 8;
+                this.speedY = isBurst ? (Math.random() - 0.5) * 6 : -(Math.random() * 1.5 + 0.8);
+                this.speedX = isBurst ? (Math.random() - 0.5) * 6 : (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random() * 0.6 + 0.4;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 0.5) * 2;
+                this.color = Math.random() > 0.3 ? 'rgba(244, 114, 182, ' : 'rgba(251, 191, 36, ';
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotSpeed;
+                this.opacity -= 0.003;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.fillStyle = this.color + this.opacity + ')';
+                ctx.font = `${this.size}px sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('❤️', 0, 0);
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 28; i++) {
+            const p = new HeartParticle();
+            p.y = Math.random() * height;
+            particles.push(p);
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+
+            if (particles.length < 35 && Math.random() < 0.1) {
+                particles.push(new HeartParticle());
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                if (p.opacity <= 0 || p.y < -30) {
+                    particles.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Click / Tap Burst Hearts FX
+        window.addEventListener('click', (e) => {
+            if (e.target.closest('button, input, textarea, a, .envelope-3d')) return;
+            for (let i = 0; i < 7; i++) {
+                particles.push(new HeartParticle(e.clientX, e.clientY, true));
+            }
+        });
+
+        // Audio Autoplay Handler
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgAudio');
+            if (audio) {
+                audio.play().catch(() => {
+                    document.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+        applyStateToUI();
+    </script>
+</body>
+</html>
